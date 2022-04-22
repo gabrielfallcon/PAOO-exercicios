@@ -31,6 +31,8 @@ const all = (vs, fn) => {
     return true;
 };
 console.log(`exercicio2: ${all(numberOrder, (x, y) => x < y)}`);
+// exercicio 3===============================================
+// funcao para saber se todos os numeros da arrayy é par 
 const numberOrderGenericS = ['v', 'ss'];
 const allGeneric = (vs, fn) => {
     var hasError = false;

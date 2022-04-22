@@ -50,9 +50,6 @@ console.log(`exercicio2: ${all(numberOrder, (x, y) => x < y)}`);
 
 // exercicio 3===============================================
 // funcao para saber se todos os numeros da arrayy é par 
-type NaoVazia<V> = [V];
-type Lista<V> = NaoVazia<V>;
-
 const numberOrderGenericS = ['v','ss'];
 
 const allGeneric = <V> (vs: V[], fn: (a: V, b: V) => boolean): boolean => {
