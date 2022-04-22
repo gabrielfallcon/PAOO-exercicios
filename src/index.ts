@@ -50,14 +50,18 @@ console.log(`exercicio2: ${all(numberOrder, (x, y) => x < y)}`);
 
 // exercicio 3===============================================
 // funcao para saber se todos os numeros da arrayy é par 
-const numbersPairs = [2, 4, 6, 8, 10];
+type NaoVazia<V> = [V];
+type Lista<V> = NaoVazia<V>;
 
-const isPair = (vs: number[], fn: (a: number) => boolean): boolean => {
+const numberOrderGenericS = ['v','ss'];
+
+const allGeneric = <V> (vs: V[], fn: (a: V, b: V) => boolean): boolean => {
     var hasError = false;
-    for(let i = 0; i < vs.length; i++) {
+    for(let i = 0; i < (vs.length - 1); i++) {
         let currentBefore = i;
+        let currentAfter = i + 1;
 
-        const response = fn(vs[currentBefore])
+        const response = fn(vs[currentBefore], vs[currentAfter])
 
         if (!response) {
             hasError = true;
@@ -69,7 +73,7 @@ const isPair = (vs: number[], fn: (a: number) => boolean): boolean => {
     return true;
 }
 
-console.log(`exercicio3: ${isPair(numbersPairs, (x) => (x % 2) === 0)}`);
+console.log(`exercicio3: ${allGeneric<String>(numberOrderGenericS, (x, y) => (typeof x  === "string") && (typeof y === "string"))}`);
 
 
 // exercicio 4===============================================
@@ -102,9 +106,9 @@ console.log(`exercicio4: ${hasBigger(numberDisordered, (x, y) => x > y)}`);
 // exercicio 5===============================================
 // verificar se existe pelo menos um par de numeros pares 
 
-const numbersPair = [4, 7, 10, 12, 12, 5];
+const numberDisorderedGeneric = [4, 7, 10, 11, 12, 5];
 
-const hasPairOdd = (vs: number[], fn: (a: number, b: number) => boolean): boolean => {
+const hasBiggerGeneric = <L> (vs: L[], fn: (a: L, b: L) => boolean): boolean => {
     var hasTrue = false;
     for(let i = 0; i < (vs.length - 1); i++) {
         let currentBefore = i;
@@ -123,4 +127,4 @@ const hasPairOdd = (vs: number[], fn: (a: number, b: number) => boolean): boolea
     return true;
 }
 
-console.log(`exercicio5: ${hasBigger(numbersPair, (x, y) => ((x%2) === 0) && ((y%2) === 0))}`);
+console.log(`exercicio5: ${hasBiggerGeneric<Number>(numberDisorderedGeneric, (x, y) => x > y)}`);

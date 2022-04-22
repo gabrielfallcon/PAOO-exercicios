@@ -1,4 +1,7 @@
 "use strict";
+// obs: professor caso queira fazer alguma alteracao no codigo
+// para validar alguma funcao, é necessario rodar 
+// o comando yarn build para transpilar o codigo novamente
 // exercicio 1 ===============================================
 const numberColletion = [6, 4, 3, 9, 20];
 const maxMin = (vs) => {
@@ -28,14 +31,13 @@ const all = (vs, fn) => {
     return true;
 };
 console.log(`exercicio2: ${all(numberOrder, (x, y) => x < y)}`);
-// exercicio 3===============================================
-// funcao para saber se todos os numeros da arrayy é par 
-const numbersPairs = [2, 4, 6, 8, 10, 11];
-const isPair = (vs, fn) => {
+const numberOrderGenericS = ['v', 'ss'];
+const allGeneric = (vs, fn) => {
     var hasError = false;
-    for (let i = 0; i < vs.length; i++) {
+    for (let i = 0; i < (vs.length - 1); i++) {
         let currentBefore = i;
-        const response = fn(vs[currentBefore]);
+        let currentAfter = i + 1;
+        const response = fn(vs[currentBefore], vs[currentAfter]);
         if (!response) {
             hasError = true;
         }
@@ -44,7 +46,7 @@ const isPair = (vs, fn) => {
         return false;
     return true;
 };
-console.log(`exercicio3: ${isPair(numbersPairs, (x) => (x % 2) === 0)}`);
+console.log(`exercicio3: ${allGeneric(numberOrderGenericS, (x, y) => (typeof x === "string") && (typeof y === "string"))}`);
 // exercicio 4===============================================
 const numberDisordered = [4, 7, 10, 11, 12, 5];
 const hasBigger = (vs, fn) => {
@@ -65,8 +67,8 @@ const hasBigger = (vs, fn) => {
 console.log(`exercicio4: ${hasBigger(numberDisordered, (x, y) => x > y)}`);
 // exercicio 5===============================================
 // verificar se existe pelo menos um par de numeros pares 
-const numbersPair = [4, 7, 10, 12, 12, 5];
-const hasPairOdd = (vs, fn) => {
+const numberDisorderedGeneric = [4, 7, 10, 11, 12, 5];
+const hasBiggerGeneric = (vs, fn) => {
     var hasTrue = false;
     for (let i = 0; i < (vs.length - 1); i++) {
         let currentBefore = i;
@@ -81,4 +83,4 @@ const hasPairOdd = (vs, fn) => {
         return false;
     return true;
 };
-console.log(`exercicio5: ${hasBigger(numbersPair, (x, y) => ((x % 2) === 0) && ((y % 2) === 0))}`);
+console.log(`exercicio5: ${hasBiggerGeneric(numberDisorderedGeneric, (x, y) => x > y)}`);
